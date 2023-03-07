@@ -87,7 +87,7 @@ public static void poistaLuettelo(String otsikko) {
         if (tiedosto.delete()) {
             System.out.println("Todo-luettelo " + otsikko + " poistettu.");
         } else {
-            System.out.println("Virhe poistettaessa 1tiedostoa.");
+            System.out.println("Virhe poistettaessa tiedostoa.");
         }
     } else {
         System.out.println("Luetteloa " + otsikko + " ei löytynyt.");
