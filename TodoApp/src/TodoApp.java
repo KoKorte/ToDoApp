@@ -13,17 +13,17 @@ public class TodoApp {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Valitse toiminto: ");
-            System.out.println("1. Luettelon luominen");
-            System.out.println("2. Luettelon tarkasteleminen");
-            System.out.println("3. Luettelon poistaminen");
-            System.out.println("4. Sovelluksen lopettaminen");
+            System.out.println("Mikä on valintasi?: ");
+            System.out.println("1. Tehtävän luonti");
+            System.out.println("2. Tehtävien tarkistaminen");
+            System.out.println("3. Tehtävän poistaminen");
+            System.out.println("4. Sulje sovellus");
 
             int valinta = scanner.nextInt();
             scanner.nextLine();
 
             if (valinta == 1) {
-System.out.println("Syötä luettelon otsikko: ");
+System.out.println("Listaa tehtävä: ");
             String otsikko = scanner.nextLine();
             luoLuettelo(otsikko);
         } else if (valinta == 2) {
@@ -49,9 +49,9 @@ public static void luoLuettelo(String otsikko) {
         File tiedosto = new File(otsikko + ".txt");
 
         if (tiedosto.createNewFile()) {
-            System.out.println("Luotu uusi todo-luettelo: " + otsikko);
+            System.out.println("Luotu uusi todo-lista: " + otsikko);
         } else {
-            System.out.println("Luettelo " + otsikko + " on jo olemassa.");
+            System.out.println("Tehtävä " + otsikko + " on jo olemassa.");
         }
     } catch (IOException e) {
         System.out.println("Virhe luodessa tiedostoa: " + e.getMessage());
@@ -65,7 +65,7 @@ public static void naytaLuettelo(String otsikko) {
         if (tiedosto.exists()) {
             BufferedReader lukija = new BufferedReader(new FileReader(tiedosto));
             String rivi = null;
-            System.out.println("Todo-luettelo " + otsikko + ":");
+            System.out.println("Todo-lista " + otsikko + ":");
 
             while ((rivi = lukija.readLine()) != null) {
                 System.out.println(rivi);
@@ -73,10 +73,10 @@ public static void naytaLuettelo(String otsikko) {
 
             lukija.close();
         } else {
-            System.out.println("Luetteloa " + otsikko + " ei löytynyt.");
+            System.out.println("Tehtävää " + otsikko + " ei löytynyt.");
         }
     } catch (IOException e) {
-        System.out.println("Virhe lukiessa tiedostoa: " + e.getMessage());
+        System.out.println("Virhe listaa lukiessa: " + e.getMessage());
     }
 }
 
@@ -85,12 +85,12 @@ public static void poistaLuettelo(String otsikko) {
 
     if (tiedosto.exists()) {
         if (tiedosto.delete()) {
-            System.out.println("Todo-luettelo " + otsikko + " poistettu.");
+            System.out.println("Todo-lista " + otsikko + " poistettu.");
         } else {
-            System.out.println("Virhe poistettaessa tiedostoa.");
+            System.out.println("Virhe poistettaessa listaa.");
         }
     } else {
-        System.out.println("Luetteloa " + otsikko + " ei löytynyt.");
+        System.out.println("Tehtävää " + otsikko + " ei löytynyt.");
     }
 }
 }
